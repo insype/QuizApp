@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizApp.Data;
 
 namespace QuizApp.Controllers
 {
+    [Authorize]
     public class QuizController : Controller
     {
         private readonly QuizDbContext _context;

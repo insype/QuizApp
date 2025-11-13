@@ -2,46 +2,54 @@
 
 <h2>Take the Quiz</h2>
 
-<form asp-action="Submit" method="post">
-    @{ int questionNumber = 1; }
-    @foreach (var question in Model)
-    {
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5>@questionNumber. @question.QuestionText</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" 
-                           name="answers[@question.Id]" value="1" id="q@(question.Id)_opt1" required>
-                    <label class="form-check-label" for="q@(question.Id)_opt1">
-                        @question.Option1
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" 
-                           name="answers[@question.Id]" value="2" id="q@(question.Id)_opt2">
-                    <label class="form-check-label" for="q@(question.Id)_opt2">
-                        @question.Option2
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" 
-                           name="answers[@question.Id]" value="3" id="q@(question.Id)_opt3">
-                    <label class="form-check-label" for="q@(question.Id)_opt3">
-                        @question.Option3
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" 
-                           name="answers[@question.Id]" value="4" id="q@(question.Id)_opt4">
-                    <label class="form-check-label" for="q@(question.Id)_opt4">
-                        @question.Option4
-                    </label>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No questions available yet. Please check back later!
+    </div>
+}
+else
+{
+    <form asp-action="Submit" method="post">
+        @{ int questionNumber = 1; }
+        @foreach (var question in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>@questionNumber. @question.QuestionText</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" 
+                               name="answers[@question.Id]" value="1" id="q@(question.Id)_opt1" required>
+                        <label class="form-check-label" for="q@(question.Id)_opt1">
+                            @question.Option1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" 
+                               name="answers[@question.Id]" value="2" id="q@(question.Id)_opt2">
+                        <label class="form-check-label" for="q@(question.Id)_opt2">
+                            @question.Option2
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" 
+                               name="answers[@question.Id]" value="3" id="q@(question.Id)_opt3">
+                        <label class="form-check-label" for="q@(question.Id)_opt3">
+                            @question.Option3
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" 
+                               name="answers[@question.Id]" value="4" id="q@(question.Id)_opt4">
+                        <label class="form-check-label" for="q@(question.Id)_opt4">
+                            @question.Option4
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        questionNumber++;
-    }
-    
-    <button type="submit" class="btn btn-primary btn-lg">Submit Quiz</button>
-    <a asp-controller="Questions" asp-action="Index" class="btn btn-secondary">Back to Questions</a>
-</form>
+            questionNumber++;
+        }
+        
+        <button type="submit" class="btn btn-primary btn-lg">Submit Quiz</button>
+    </form>
+}

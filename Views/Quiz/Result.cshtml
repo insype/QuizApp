@@ -1,0 +1,22 @@
+<h2>Quiz Results</h2>
+
+<div class="alert alert-info">
+    <h3>Your Score: @ViewBag.Score out of @ViewBag.Total</h3>
+    <h4>Percentage: @ViewBag.Percentage%</h4>
+    
+    @if (ViewBag.Percentage >= 80)
+    {
+        <p class="text-success">Excellent! Well done!</p>
+    }
+    else if (ViewBag.Percentage >= 60)
+    {
+        <p class="text-primary">Good job! Keep it up!</p>
+    }
+    else
+    {
+        <p class="text-warning">Keep practicing!</p>
+    }
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Take Quiz Again</a>
+<a asp-controller="Questions" asp-action="Index" class="btn btn-secondary">Manage Questions</a>

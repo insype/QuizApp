@@ -1,0 +1,25 @@
+@model QuizApp.Models.Question
+
+<h2>Delete Question</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>@Model.QuestionText</h4>
+    <dl class="row">
+        <dt class="col-sm-3">Options:</dt>
+        <dd class="col-sm-9">
+            1. @Model.Option1<br/>
+            2. @Model.Option2<br/>
+            3. @Model.Option3<br/>
+            4. @Model.Option4
+        </dd>
+        <dt class="col-sm-3">Correct:</dt>
+        <dd class="col-sm-9">Option @Model.CorrectOption</dd>
+    </dl>
+    
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
